@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Portfolio website for Your Name: projects, publications, and contact." />
+  <meta name="author" content="Your Name" />
+  <meta property="og:title" content="Your Name — Portfolio" />
+  <meta property="og:description" content="Projects, skills, and contact." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og-image.png" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="icon" href="assets/favicon.svg" />
+  <style>
+    :root{
+      --bg: #0b1020;
+      --bg-soft: #111833;
+      --text: #e7e9ee;
+      --muted: #aab1c3;
+      --card: #121b36;
+      --brand: #0ea5e9; /* sky-500 */
+      --brand-2: #22d3ee; /* cyan-400 */
+      --ring: rgba(14,165,233,.35);
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f8fafc; --bg-soft:#f1f5f9; --text:#0f172a; --muted:#475569; --card:#ffffff; --ring:rgba(14,165,233,.35); }
+    }
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+    body{
+      margin:0; font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text); background:radial-gradient(1200px 800px at 100% -10%, rgba(34,211,238,.1), transparent 60%),
+      radial-gradient(1200px 800px at -20% -20%, rgba(14,165,233,.12), transparent 60%), var(--bg);
+    }
+    a{ color:inherit }
+    img{ max-width:100%; height:auto }
+    .container{ width:100%; max-width:1100px; padding:0 1.25rem; margin:0 auto }
+    .skip{ position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden }
+    .skip:focus{ left:1rem; top:1rem; width:auto; height:auto; padding:.5rem .75rem; background:var(--card); box-shadow:var(--shadow); border-radius:.5rem }
+
+    header{
+      position:sticky; top:0; backdrop-filter:saturate(180%) blur(8px); background:color-mix(in oklab, var(--bg) 80%, transparent);
+      border-bottom:1px solid color-mix(in oklab, var(--muted) 20%, transparent); z-index:10
+    }
+    .nav{ display:flex; align-items:center; justify-content:space-between; padding:.85rem 0 }
+    .brand{ display:flex; gap:.6rem; align-items:center; font-weight:700; letter-spacing:.2px }
+    .dot{ width:10px; height:10px; border-radius:999px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:0 0 0 4px var(--ring) }
+    .links{ display:flex; gap:1rem; align-items:center }
+    .links a{ text-decoration:none; padding:.4rem .6rem; border-radius:.45rem; color:var(--muted) }
+    .links a:hover{ color:var(--text); background:color-mix(in oklab,var(--muted) 10%, transparent) }
+    .btn{ display:inline-flex; gap:.5rem; align-items:center; padding:.55rem .8rem; border-radius:.65rem; border:1px solid color-mix(in oklab, var(--brand) 35%, transparent); text-decoration:none; background:linear-gradient(180deg, color-mix(in oklab, var(--card) 90%, transparent), color-mix(in oklab, var(--bg-soft) 70%, transparent)); box-shadow:var(--shadow) }
+
+    .hero{ padding:5rem 0 3rem }
+    .hero-grid{ display:grid; grid-template-columns:1.2fr .8fr; gap:2rem; align-items:center }
+    .badge{ display:inline-flex; align-items:center; gap:.5rem; padding:.25rem .55rem; border-radius:999px; font-size:.85rem; color:var(--text); background:linear-gradient(135deg, color-mix(in oklab, var(--brand) 25%, var(--card)), var(--card)); border:1px solid var(--ring) }
+    h1{ font-size: clamp(2rem, 4vw + 1rem, 3.1rem); line-height:1.15; margin:.5rem 0 1rem }
+    .lead{ font-size:1.05rem; color:var(--muted); max-width:60ch }
+
+    .pill-row{ display:flex; flex-wrap:wrap; gap:.5rem; margin:1rem 0 0 }
+    .pill{ padding:.35rem .6rem; border-radius:999px; background:color-mix(in oklab, var(--brand) 10%, var(--card)); border:1px solid color-mix(in oklab, var(--brand) 25%, transparent); color:var(--muted); font-size:.85rem }
+    .cta-row{ display:flex; gap:.75rem; align-items:center; margin-top:1.25rem }
+
+    .card{ background:var(--card); border:1px solid color-mix(in oklab, var(--muted) 18%, transparent); border-radius:1rem; padding:1rem; box-shadow:var(--shadow) }
+    .grid{ display:grid; gap:1rem }
+
+    .section{ padding:3rem 0; scroll-margin-top:4.5rem }
+    .section h2{ margin:0 0 1rem; font-size:1.75rem }
+    .muted{ color:var(--muted) }
+
+    .projects{ grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) }
+    .proj{ display:flex; flex-direction:column; gap:.75rem }
+    .proj .thumb{ aspect-ratio: 16/9; border-radius:.75rem; overflow:hidden; background:var(--bg-soft); display:grid; place-items:center; border:1px dashed color-mix(in oklab, var(--muted) 25%, transparent) }
+    .proj h3{ margin:.25rem 0; font-size:1.1rem }
+    .proj .tags{ display:flex; flex-wrap:wrap; gap:.35rem }
+    .proj .tag{ font-size:.8rem; padding:.25rem .5rem; background:color-mix(in oklab,var(--brand) 10%, var(--card)); border:1px solid color-mix(in oklab,var(--brand) 25%, transparent); border-radius:999px; color:var(--muted) }
+
+    .twocol{ grid-template-columns: 1fr 1fr }
+
+    footer{ padding:3rem 0 4rem; border-top:1px solid color-mix(in oklab, var(--muted) 18%, transparent); margin-top:2rem }
+    .foot-grid{ display:grid; grid-template-columns: 1.1fr .9fr; gap:1rem; align-items:start }
+
+    .socials{ display:flex; gap:.75rem; flex-wrap:wrap }
+    .chip{ padding:.45rem .65rem; border-radius:.65rem; border:1px solid color-mix(in oklab, var(--muted) 25%, transparent); color:var(--muted); text-decoration:none }
+    .chip:hover{ color:var(--text); border-color:var(--brand) }
+
+    .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0 }
+
+    @media (max-width: 900px){ .hero-grid{ grid-template-columns:1fr } .foot-grid{ grid-template-columns:1fr } .twocol{ grid-template-columns:1fr } }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip">Skip to content</a>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Home">
+        <span class="dot" aria-hidden="true"></span>
+        <span>Your Name</span>
+      </a>
+      <nav class="links" aria-label="Primary Navigation">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <button id="themeBtn" class="btn" aria-live="polite" aria-label="Toggle dark mode">🌓 <span class="sr-only">Toggle theme</span></button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="badge">👋 Hello, I’m Your Name</span>
+          <h1>Building data-driven tools that turn messy biology into clear insight.</h1>
+          <p class="lead">I’m a <strong>computational biologist / data scientist</strong> focused on machine learning for single-cell and sequencing data. I like shipping clean, usable tools and writing about what I learn along the way.</p>
+          <div class="pill-row" aria-label="Quick facts">
+            <span class="pill">🧬 single-cell & RNA-seq</span>
+            <span class="pill">🧠 ML for biology</span>
+            <span class="pill">📦 open-source</span>
+            <span class="pill">✍️ technical writing</span>
+          </div>
+          <div class="cta-row">
+            <a class="btn" href="#projects">View Projects</a>
+            <a class="btn" href="mailto:you@example.com">Email Me</a>
+            <a class="btn" href="assets/Resume.pdf" download>Download Résumé</a>
+          </div>
+        </div>
+        <div>
+          <div class="card" role="img" aria-label="Profile image placeholder">
+            <div style="aspect-ratio:1/1; border-radius:.75rem; background:linear-gradient(135deg,var(--brand),var(--brand-2)); display:grid; place-items:center;">
+              <span style="font-size:3rem">🧪</span>
+            </div>
+            <p class="muted" style="margin:.75rem 0 0">Replace with a headshot (assets/profile.jpg) or keep this fun emoji block.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Featured Projects</h2>
+        <p class="muted">A few things I’ve built and shipped recently.</p>
+        <div class="grid projects">
+          <!-- Project Card 1 -->
+          <article class="card proj">
+            <div class="thumb"><span>Project Screenshot</span></div>
+            <h3>scViewer — Interactive .h5ad Explorer</h3>
+            <p class="muted">A lightweight web app to upload and explore single-cell data: UMAPs, markers, and DE analysis on the fly.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Scanpy</span>
+              <span class="tag">Streamlit</span>
+            </div>
+            <div class="cta-row">
+              <a class="btn" href="#">Live Demo</a>
+              <a class="btn" href="#">GitHub</a>
+            </div>
+          </article>
+          <!-- Project Card 2 -->
+          <article class="card proj">
+            <div class="thumb"><span>Project Screenshot</span></div>
+            <h3>ArcCell — Fast scRNA-seq Annotation</h3>
+            <p class="muted">Metric-learning model (ArcFace) with SHAP-based gene explanations. Benchmarked on PBMC and mouse atlas.</p>
+            <div class="tags">
+              <span class="tag">PyTorch</span>
+              <span class="tag">SHAP</span>
+              <span class="tag">ML</span>
+            </div>
+            <div class="cta-row">
+              <a class="btn" href="#">Paper</a>
+              <a class="btn" href="#">GitHub</a>
+            </div>
+          </article>
+          <!-- Project Card 3 -->
+          <article class="card proj">
+            <div class="thumb"><span>Project Screenshot</span></div>
+            <h3>Viral Host Classifier</h3>
+            <p class="muted">Protein-LM embeddings (ESM) + contrastive learning to predict host type from influenza PB2 sequences.</p>
+            <div class="tags">
+              <span class="tag">ESM</span>
+              <span class="tag">Contrastive</span>
+              <span class="tag">BioNLP</span>
+            </div>
+            <div class="cta-row">
+              <a class="btn" href="#">Blog</a>
+              <a class="btn" href="#">GitHub</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container grid twocol">
+        <div>
+          <h2>About</h2>
+          <p class="muted">I’m a senior studying computational biology. I enjoy building tools that make research more robust and accessible, with a focus on good UX and reproducibility.</p>
+          <p class="muted">Previously at <strong>Lab/Company</strong>, I worked on single-cell pipelines, QC automation, and interactive visualization.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:.25rem 0 0">Highlights</h3>
+          <ul>
+            <li>Open-source contributor to <em>scanpy</em>/<em>anndata</em> ecosystem.</li>
+            <li>Designed and shipped two teaching workshops for undergrads.</li>
+            <li>Comfortable across PyData + lightweight front‑end stacks.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <h2>Skills</h2>
+        <div class="grid twocol">
+          <div class="card">
+            <h3>Core</h3>
+            <ul>
+              <li>Python (pandas, numpy, scikit‑learn, PyTorch)</li>
+              <li>Single‑cell: Scanpy, AnnData, QC, clustering, DE</li>
+              <li>Visualization: matplotlib, plotly, Altair</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Comfortable With</h3>
+            <ul>
+              <li>Statistics: experimental design, batch correction</li>
+              <li>MLOps: notebooks → apps, packaging, testing</li>
+              <li>Web: HTML/CSS/JS, Electron, GitHub Pages</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Contact</h2>
+        <p class="muted">Best way to reach me is email. I’m also active on GitHub and LinkedIn.</p>
+        <div class="socials">
+          <a class="chip" href="mailto:you@example.com">Email</a>
+          <a class="chip" href="#">GitHub</a>
+          <a class="chip" href="#">LinkedIn</a>
+          <a class="chip" href="#">Google Scholar</a>
+          <a class="chip" href="#">Twitter/X</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot-grid">
+      <div>
+        <strong>Your Name</strong>
+        <p class="muted">© <span id="year"></span> · Built with plain HTML/CSS/JS · Hosted on GitHub Pages</p>
+      </div>
+      <form class="card" action="https://formspree.io/f/your-form-id" method="POST">
+        <label for="m" style="display:block; margin-bottom:.25rem">Quick message</label>
+        <input id="m" name="message" required placeholder="Say hi…" style="width:100%; padding:.6rem .75rem; border-radius:.5rem; border:1px solid color-mix(in oklab, var(--muted) 25%, transparent); background:var(--bg-soft); color:var(--text); margin-bottom:.5rem" />
+        <button class="btn" type="submit">Send</button>
+        <p class="muted" style="margin:.5rem 0 0; font-size:.85rem">Uses Formspree; replace with your endpoint or remove the form.</p>
+      </form>
+    </div>
+  </footer>
+
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // theme toggle (respects system, persists choice)
+    const themeBtn = document.getElementById('themeBtn');
+    const KEY = 'pref-theme';
+    function setTheme(mode){
+      if(mode === 'light'){
+        document.documentElement.style.colorScheme = 'light';
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0ea5e9');
+        localStorage.setItem(KEY,'light');
+      }else if(mode === 'dark'){
+        document.documentElement.style.colorScheme = 'dark';
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0ea5e9');
+        localStorage.setItem(KEY,'dark');
+      }else{
+        localStorage.removeItem(KEY);
+      }
+    }
+    function initTheme(){
+      const saved = localStorage.getItem(KEY);
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if(saved){ setTheme(saved); }
+      else{ setTheme(prefersDark ? 'dark' : 'light'); }
+    }
+    initTheme();
+    themeBtn.addEventListener('click', ()=>{
+      const current = localStorage.getItem(KEY) || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    // smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+  </script>
+
+  <!--
+  HOW TO DEPLOY ON GITHUB PAGES
+  1) Create a repo named: <username>.github.io
+  2) Add this file as index.html. Create /assets/ with optional favicon.svg, og-image.png, Resume.pdf, profile.jpg
+  3) Commit & push; the site will be live at https://<username>.github.io after a minute.
+  4) Custom domain? Add CNAME file at repo root with your domain, then set DNS A/AAAA to GitHub Pages.
+
+  QUICK CUSTOMIZATION CHECKLIST
+  - Replace "Your Name", email, links, and meta tags.
+  - Swap emoji block with a real image (assets/profile.jpg) if you want.
+  - Update project cards with your links and descriptions.
+  - Remove Formspree card or add your form endpoint.
+  - Add Google Analytics or Plausible if you want metrics.
+
+  OPTIONAL ENHANCEMENTS
+  - Create projects.json and fetch() to render cards dynamically.
+  - Add blog/ directory and link it in the header.
+  - Split CSS/JS into /assets/styles.css and /assets/main.js when the site grows.
+  -->
+</body>
+</html>
