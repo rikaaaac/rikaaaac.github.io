@@ -130,7 +130,7 @@
         <div>
           <div class="card" role="img" aria-label="Profile image placeholder">
             <div style="aspect-ratio:1/1; border-radius:.75rem; background:linear-gradient(135deg,var(--brand),var(--brand-2)); display:grid; place-items:center;">
-              <span style="font-size:3rem">"assets/linkedin.png"</span>
+              <span style="font-size:3rem">assets/linkedin.png</span>
             </div>
             <p class="muted" style="margin:.75rem 0 0"></p>
           </div>
@@ -146,15 +146,16 @@
           <!-- Project Card 1 -->
           <article class="card proj">
             <div class="thumb"><span>Project Screenshot</span></div>
-            <h3>scViewer — Interactive .h5ad Explorer</h3>
-            <p class="muted">A lightweight web app to upload and explore single-cell data: UMAPs, markers, and DE analysis on the fly.</p>
+            <h3>scViewer</h3>
+            <p class="muted">A Scanpy-based single cell analysis app made easy. Made for those who don't want to code. Includes the standard single-cell analysis pipeline
+                as well as advanced features such as h5ad support, cell type annotation, differential expression, and customizable visualizations.
+            </p>
             <div class="tags">
               <span class="tag">Python</span>
               <span class="tag">Scanpy</span>
               <span class="tag">Streamlit</span>
             </div>
             <div class="cta-row">
-              <a class="btn" href="#">Live Demo</a>
               <a class="btn" href="#">GitHub</a>
             </div>
           </article>
@@ -162,14 +163,13 @@
           <article class="card proj">
             <div class="thumb"><span>Project Screenshot</span></div>
             <h3>ArcCell — Fast scRNA-seq Annotation</h3>
-            <p class="muted">Metric-learning model (ArcFace) with SHAP-based gene explanations. Benchmarked on PBMC and mouse atlas.</p>
+            <p class="muted">Metric-learning model (ArcFace) with SHAP-based gene explanations. Benchmarked single-cell dataset of mouse gonadal.</p>
             <div class="tags">
               <span class="tag">PyTorch</span>
               <span class="tag">SHAP</span>
               <span class="tag">ML</span>
             </div>
             <div class="cta-row">
-              <a class="btn" href="#">Paper</a>
               <a class="btn" href="#">GitHub</a>
             </div>
           </article>
@@ -181,11 +181,9 @@
             <div class="tags">
               <span class="tag">ESM</span>
               <span class="tag">Contrastive</span>
-              <span class="tag">BioNLP</span>
+              <span class="tag">NLP</span>
             </div>
             <div class="cta-row">
-              <a class="btn" href="#">Blog</a>
-              <a class="btn" href="#">GitHub</a>
             </div>
           </article>
         </div>
@@ -196,10 +194,13 @@
       <div class="container grid twocol">
         <div>
           <h2>About</h2>
-          <p class="muted">I’m a senior studying computational biology. I enjoy building tools that make research more robust and accessible, with a focus on good UX and reproducibility.</p>
-          <p class="muted">Previously at <strong>Lab/Company</strong>, I worked on single-cell pipelines, QC automation, and interactive visualization.</p>
+          <p class="muted">I’m currently a senior studying computational biology at Barnard College, Columbia University. 
+            I enjoy utilizing tools to answer complex biological questions. I also enjoy building tools that make computational research more accessible to non-coding scientists.</p>
+          <p class="muted">Currently at <strong>Mansfield Lab, Barnard</strong>, focusing on characterizing brown adipose tissue development via single-cell and spatial transcriptomics.</p>
+          <p class="muted">Previously at <strong>Uhlemann Lab, Columbia Irving Medical Center</strong>, I worked on designing whole genome sequencing pipeline and various scripts to 
+                            investigate movements of insertion sequences in multi-drug resistant organisms.</p>
         </div>
-        <div class="card">
+        <!-- <div class="card">
           <h3 style="margin:.25rem 0 0">Highlights</h3>
           <ul>
             <li>Open-source contributor to <em>scanpy</em>/<em>anndata</em> ecosystem.</li>
@@ -207,7 +208,7 @@
             <li>Comfortable across PyData + lightweight front‑end stacks.</li>
           </ul>
         </div>
-      </div>
+      </div> -->
     </section>
 
     <section id="skills" class="section">
@@ -217,24 +218,26 @@
           <div class="card">
             <h3>Core</h3>
             <ul>
-              <li>Python (pandas, numpy, scikit‑learn, PyTorch)</li>
-              <li>Single‑cell: Scanpy, AnnData, QC, clustering, DE</li>
-              <li>Visualization: matplotlib, plotly, Altair</li>
+              <li>Programming languages: Python, R, Bash</li>
+              <li>Bioinformatics analysis: single-cell analysis, bulk RNA-seq analysis, single-cell trajectory inference, gene regulatory network inference,
+                ChIP-seq analysis, whole genome sequencing, ATAC-seq analysis</li>
+              </li>
+              <li>Machine learning: neural networks, graph autoencoders, ESM</li>
+              <li>Others: ArcGIS, Tableau, Stata, Microsoft 365</li>
             </ul>
           </div>
           <div class="card">
             <h3>Comfortable With</h3>
             <ul>
-              <li>Statistics: experimental design, batch correction</li>
-              <li>MLOps: notebooks → apps, packaging, testing</li>
-              <li>Web: HTML/CSS/JS, Electron, GitHub Pages</li>
+              <li>Statistics: hypothesis testing, regression modeling, statistical inference</li>
+              <li>Web: HTML/CSS, Electron, GitHub Pages</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section">
+    <!-- <section id="contact" class="section">
       <div class="container">
         <h2>Contact</h2>
         <p class="muted">Best way to reach me is email. I’m also active on GitHub and LinkedIn.</p>
@@ -246,21 +249,21 @@
           <a class="chip" href="#">Twitter/X</a>
         </div>
       </div>
-    </section>
+    </section> -->
   </main>
 
   <footer>
     <div class="container foot-grid">
       <div>
-        <strong>Your Name</strong>
+        <strong>Rika Chan</strong>
         <p class="muted">© <span id="year"></span> · Built with plain HTML/CSS/JS · Hosted on GitHub Pages</p>
       </div>
-      <form class="card" action="https://formspree.io/f/your-form-id" method="POST">
+      <!-- <form class="card" action="https://formspree.io/f/your-form-id" method="POST">
         <label for="m" style="display:block; margin-bottom:.25rem">Quick message</label>
         <input id="m" name="message" required placeholder="Say hi…" style="width:100%; padding:.6rem .75rem; border-radius:.5rem; border:1px solid color-mix(in oklab, var(--muted) 25%, transparent); background:var(--bg-soft); color:var(--text); margin-bottom:.5rem" />
         <button class="btn" type="submit">Send</button>
         <p class="muted" style="margin:.5rem 0 0; font-size:.85rem">Uses Formspree; replace with your endpoint or remove the form.</p>
-      </form>
+      </form> -->
     </div>
   </footer>
 
@@ -306,24 +309,5 @@
     });
   </script>
 
-  <!--
-  HOW TO DEPLOY ON GITHUB PAGES
-  1) Create a repo named: <username>.github.io
-  2) Add this file as index.html. Create /assets/ with optional favicon.svg, og-image.png, Resume.pdf, profile.jpg
-  3) Commit & push; the site will be live at https://<username>.github.io after a minute.
-  4) Custom domain? Add CNAME file at repo root with your domain, then set DNS A/AAAA to GitHub Pages.
-
-  QUICK CUSTOMIZATION CHECKLIST
-  - Replace "Your Name", email, links, and meta tags.
-  - Swap emoji block with a real image (assets/profile.jpg) if you want.
-  - Update project cards with your links and descriptions.
-  - Remove Formspree card or add your form endpoint.
-  - Add Google Analytics or Plausible if you want metrics.
-
-  OPTIONAL ENHANCEMENTS
-  - Create projects.json and fetch() to render cards dynamically.
-  - Add blog/ directory and link it in the header.
-  - Split CSS/JS into /assets/styles.css and /assets/main.js when the site grows.
-  -->
 </body>
 </html>
