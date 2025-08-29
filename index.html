@@ -1,262 +1,733 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0ea5e9" />
-    <title>Rika Chan</title>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rika Chan — Computational Biologist & Data Scientist</title>
+    <meta name="description" content="Computational biologist exploring the intersection of data science, AI, and biology. Building tools to make research more accessible.">
+    <meta name="author" content="Rika Chan">
+    <meta property="og:title" content="Rika Chan — Portfolio">
+    <meta property="og:description" content="Computational biologist and data scientist specializing in single-cell analysis and ML for biology.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%230ea5e9'/></svg>">
+    
     <style>
-      :root {
-        --bg: #0a0a0a;
-        --text: #f5f5f5;
-        --muted: #a1a1aa;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      [data-theme="light"] {
-        --bg: #f5f5f5;
-        --text: #0a0a0a;
-        --muted: #52525b;
-      }
+        :root {
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --secondary: #22d3ee;
+            --bg-primary: #0a0f1c;
+            --bg-secondary: #111827;
+            --bg-tertiary: #1f2937;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border: #374151;
+            --shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04);
+            --glow: 0 0 20px rgb(14 165 233 / 0.3);
+        }
 
-      body {
-        background: var(--bg);
-        color: var(--text);
-        font-family: system-ui, sans-serif;
-        margin: 0;
-        padding: 0;
-      }
+        html {
+            scroll-behavior: smooth;
+        }
 
-      header {
-        padding: 1rem;
-        border-bottom: 1px solid var(--muted);
-      }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            min-height: 100vh;
+        }
 
-      .container.nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-      nav.links a,
-      nav.links button {
-        margin-left: 1rem;
-        color: var(--muted);
-        text-decoration: none;
-        background: none;
-        border: none;
-        cursor: pointer;
-        font: inherit;
-      }
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 15, 28, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            box-shadow: var(--glow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background: rgba(14, 165, 233, 0.1);
+        }
+
+        /* Main Content */
+        main {
+            padding-top: 5rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(ellipse at center, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag {
+            padding: 0.5rem 1rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-decoration: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow), var(--shadow);
+        }
+
+        .btn-secondary {
+            padding: 0.75rem 2rem;
+            background: transparent;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .profile-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Projects Section */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--glow), var(--shadow);
+            border-color: var(--primary);
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--primary);
+            border-radius: 1rem;
+            font-size: 0.8rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text li {
+            margin-bottom: 0.75rem;
+        }
+
+        .publications-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+            height: fit-content;
+            position: sticky;
+            top: 6rem;
+        }
+
+        .publications-card h3 {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero-content,
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .publications-card {
+                position: static;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                flex-direction: column;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content > * {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .hero-content > *:nth-child(2) {
+            animation-delay: 0.2s;
+        }
     </style>
-  </head>
-  <body>
-    <header>
-      <div class="container nav">
-        <a class="brand" href="#home" aria-label="Home">
-          <span class="dot" aria-hidden="true">●</span>
-          <span>Rika Chan</span>
-        </a>
-        <nav class="links" aria-label="Primary Navigation">
-          <a href="#projects">Projects</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
-          <button id="themeBtn">Toggle Theme</button>
-        </nav>
-      </div>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#home" class="logo">
+                    <div class="logo-dot"></div>
+                    Rika Chan
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-  <main id="main">
-    <section id="home" class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="badge">Hello, I’m Rika!</span>
-          <h1>Computational biologist, data scientist </h1>
-          <p class="lead">I’m a <strong>computational biologist/data scientist</strong> exploring the intersection of data science, AI, and biology. I enjoy leveraging existing computational tools as well as building new ones to bridge the gap in computational science research.</p>
-          <p class="lead"> Contact: rc3517@barnard.edu or rikac24@gmail.com</p>
-          <div class="pill-row" aria-label="Quick facts">
-            <span class="pill">python/R/bash</span>
-            <span class="pill">scRNA-seq & bulk RNA-seq</span>
-            <span class="pill">ML for biology</span>
-            <span class="pill">spatial transcriptomics</span>
-            <span class="pill">genomics</span>
-            <span class="pill">bioinformatics pipeline</span>
-            <span class="pill">technical writing</span>
-          </div>
-          <div class="cta-row">
-            <a class="btn" href="assets/Resume.pdf" download>Download Résumé</a>
-          </div>
-        </div>
-        <div>
-          <div class="card" role="img" aria-label="Profile image placeholder">
-            <div style="aspect-ratio:1/1; border-radius:.75rem; background:linear-gradient(135deg,var(--brand),var(--brand-2)); display:grid; place-items:center; overflow:hidden;">
-                <img src="assets/linkedin.png" alt="LinkedIn"
-                    style="width:100%; height:100%; object-fit:contain;" />
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-badge">
+                            <span></span>
+                            Hello, I'm Rika!
+                        </div>
+                        <h1>Computational Biologist & Data Scientist</h1>
+                        <p class="hero-description">
+                            Exploring the intersection of data science, AI, and biology. I build computational tools and leverage existing ones to bridge gaps in scientific research and make analysis more accessible.
+                        </p>
+                        
+                        <div class="hero-tags">
+                            <span class="tag">Python/R/Bash</span>
+                            <span class="tag">scRNA-seq</span>
+                            <span class="tag">ML for Biology</span>
+                            <span class="tag">Spatial Transcriptomics</span>
+                            <span class="tag">Genomics</span>
+                            <span class="tag">Pipeline Development</span>
+                        </div>
+
+                        <div class="hero-cta">
+                            <a href="assets/Resume.pdf" class="btn" download>Download Résumé</a>
+                            <a href="#contact" class="btn-secondary">Get In Touch</a>
+                        </div>
+                    </div>
+
+                    <div class="hero-image">
+                        <div class="profile-card">
+                            <div class="profile-img">
+                                <img src="assets/linkedin.png" alt="Rika Chan" onerror="this.style.display='none'">
+                            </div>
+                            <p class="text-sm text-muted">
+                                Contact: <strong>rc3517@barnard.edu</strong><br>
+                                <strong>rikac24@gmail.com</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p class="muted" style="margin:.75rem 0 0"></p>
-           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <section id="projects" class="section">
-      <div class="container">
-        <h2>Featured Projects</h2>
-        <p class="muted">A few things I’ve worked on recently.</p>
-        <div class="grid projects">
-          <!-- Project Card 1 -->
-          <article class="card proj">
-            
-            <h3>scViewer: scRNA-seq made easy</h3>
-            <p class="muted">A Scanpy-based single cell analysis app made easy. Made for those who don't want to code. Includes the standard single-cell analysis pipeline
-                as well as advanced features such as h5ad support, cell type annotation, differential expression, and customizable visualizations.
-            </p>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">Scanpy</span>
-              <span class="tag">Streamlit</span>
+        <section id="projects" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Featured Projects</h2>
+                    <p>A selection of recent work showcasing computational biology tools and research.</p>
+                </div>
+
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>scViewer: scRNA-seq Made Easy</h3>
+                        <p>A Scanpy-based single-cell analysis application designed for researchers who prefer not to code. Features include the complete single-cell analysis pipeline, h5ad support, cell type annotation, differential expression analysis, and customizable visualizations.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Scanpy</span>
+                            <span class="project-tag">Streamlit</span>
+                        </div>
+                        <a href="https://github.com/rikaaaac/scViewer" class="btn">View on GitHub</a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>ArcCell: scRNA-seq Annotation Tool</h3>
+                        <p>A metric-learning model using ArcFace architecture with SHAP-based gene explanations. Benchmarked on single-cell datasets of mouse gonadal tissue for improved cell type annotation accuracy.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">PyTorch</span>
+                            <span class="project-tag">SHAP</span>
+                            <span class="project-tag">ML</span>
+                        </div>
+                        <a href="https://github.com/VenkatSBitra/coms4761_project" class="btn">View on GitHub</a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Viral Host Classifier</h3>
+                        <p>Advanced protein language model embeddings (ESM) combined with contrastive learning techniques to predict host types from influenza PB2 protein sequences with high accuracy.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">ESM</span>
+                            <span class="project-tag">Contrastive Learning</span>
+                            <span class="project-tag">NLP</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="cta-row">
-              <a class="btn" href="https://github.com/rikaaaac/scViewer">GitHub</a>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <div class="about-content">
+                    <div>
+                        <h2>About Me</h2>
+                        <div class="about-text">
+                            <p>I'm currently a senior studying computational biology at Barnard College, Columbia University. My passion lies in utilizing computational tools to answer complex biological questions and building accessible tools for the scientific community.</p>
+                            
+                            <p><strong>Current Positions:</strong></p>
+                            <ul>
+                                <li><strong>Mansfield Lab, Barnard College</strong> — Characterizing brown adipose tissue development using single-cell and spatial transcriptomics approaches</li>
+                                <li><strong>Empirical Reasoning Center, Barnard</strong> — Assisting students with data analysis for courses, projects, and thesis work</li>
+                                <li><strong>Barnard Writing Center</strong> — Supporting students through peer-to-peer writing consultations</li>
+                            </ul>
+
+                            <p>Previously at <strong>Uhlemann Lab, Columbia Irving Medical Center</strong>, I designed whole genome sequencing pipelines and developed scripts to investigate insertion sequence movements in multi-drug resistant organisms.</p>
+                        </div>
+                    </div>
+
+                    <div class="publications-card">
+                        <h3>Publications</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+                            Brent, A., <strong>Chan, R.</strong>, Sirkay, V., Morton, B.R., and J.H. Mansfield (2025). SOX9 is part of a combinatorial marker that reveals early development and embryological origins of the mouse brown adipose tissue depots. <em>BioRxiv</em>.
+                        </p>
+                    </div>
+                </div>
             </div>
-          </article>
-          <!-- Project Card 2 -->
-          <article class="card proj">
+        </section>
 
-            <h3>ArcCell: scRNA-seq Annotation tool</h3>
-            <p class="muted">Metric-learning model (ArcFace) with SHAP-based gene explanations. Benchmarked single-cell dataset of mouse gonadal.</p>
-            <div class="tags">
-              <span class="tag">PyTorch</span>
-              <span class="tag">SHAP</span>
-              <span class="tag">ML</span>
+        <section id="skills" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Skills & Expertise</h2>
+                    <p>Technical skills developed through research and academic projects.</p>
+                </div>
+
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Core Competencies</h3>
+                        <ul>
+                            <li><strong>Programming:</strong> Python, R, Bash scripting</li>
+                            <li><strong>Bioinformatics:</strong> Single-cell analysis, bulk RNA-seq, trajectory inference, gene regulatory networks</li>
+                            <li><strong>Genomics:</strong> ChIP-seq, whole genome sequencing, ATAC-seq analysis</li>
+                            <li><strong>Machine Learning:</strong> Neural networks, graph autoencoders, protein language models (ESM)</li>
+                            <li><strong>Tools:</strong> ArcGIS, Tableau, Stata, Microsoft 365</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Additional Skills</h3>
+                        <ul>
+                            <li><strong>Statistics:</strong> Hypothesis testing, regression modeling, statistical inference</li>
+                            <li><strong>Web Development:</strong> HTML/CSS, Electron, Streamlit, Dash</li>
+                            <li><strong>Research:</strong> Technical writing, data visualization, pipeline development</li>
+                            <li><strong>Communication:</strong> Scientific presentation, peer tutoring, collaborative research</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="cta-row">
-              <a class="btn" href="https://github.com/VenkatSBitra/coms4761_project">GitHub</a>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="contact-content">
+                    <h2>Let's Connect</h2>
+                    <p>Interested in collaboration, research opportunities, or just want to chat about computational biology? I'd love to hear from you.</p>
+                    
+                    <div class="social-links">
+                        <a href="mailto:rc3517@barnard.edu" class="social-link">
+                            Email (Barnard)
+                        </a>
+                        <a href="mailto:rikac24@gmail.com" class="social-link">
+                            Email (Personal)
+                        </a>
+                        <a href="https://github.com/rikaaaac" class="social-link">
+                            GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/rika-chan-9a3358133/" class="social-link">
+                            LinkedIn
+                        </a>
+                        <a href="https://orcid.org/0009-0002-5990-797X" class="social-link">
+                            ORCID
+                        </a>
+                    </div>
+                </div>
             </div>
-          </article>
-          <!-- Project Card 3 -->
-          <article class="card proj">
+        </section>
+    </main>
 
-            <h3>Viral Host Classifier</h3>
-            <p class="muted">Protein-LM embeddings (ESM) + contrastive learning to predict host type from influenza PB2 sequences.</p>
-            <div class="tags">
-              <span class="tag">ESM</span>
-              <span class="tag">Contrastive</span>
-              <span class="tag">NLP</span>
-            </div>
-            <div class="cta-row">
-            </div>
-          </article>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="year">2025</span> Rika Chan · Built with HTML, CSS & JavaScript</p>
         </div>
-      </div>
-    </section>
+    </footer>
 
-    <section id="about" class="section">
-      <div class="container grid twocol">
-        <div>
-          <h2>About</h2>
-          <p class="muted">I’m currently a senior studying computational biology at Barnard College, Columbia University. 
-            I enjoy utilizing tools to answer complex biological questions. I also enjoy building tools that make computational research more accessible to non-coding scientists.</p>
-          <p class="muted">Currently at:</p>
-            <ul style="margin-left: 1.5rem;">
-                <li class="muted"><strong>Mansfield Lab, Barnard</strong>, focusing on characterizing brown adipose tissue development via single-cell and spatial transcriptomics.</li>
-                <li class="muted"><strong>Empirical Reasoning Center, Barnard</strong>, assisting students with data-related questions relating to various courses, projects, and theses.</li>
-                <li class="muted"><strong>Barnard Writing Center</strong>, helping students through peer-to-peer discussions about their writing.</li>
-            </ul>
-          <p class="muted">Previously at <strong>Uhlemann Lab, Columbia Irving Medical Center</strong>, I worked on designing whole genome sequencing pipeline and various scripts to 
-                            investigate movements of insertion sequences in multi-drug resistant organisms.</p>
-        </div>
-        <div class="card">
-          <h3 style="margin:.25rem 0 0">Publications</h3>
-          <ul>
-            <li class="muted">Brent, A., Chan, R., Sirkay, V., Morton, B.R., and J.H. Mansfield (2025). SOX9 is part of a combinatorial marker that reveals early development and embryological origins of the mouse brown adipose tissue depots. BioRxiv. https://www.biorxiv.org/content/10.1101/2025.07.16.665135v1</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    <script>
+        // Update year
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-    <section id="skills" class="section">
-      <div class="container">
-        <h2>Skills</h2>
-        <div class="grid twocol">
-          <div class="card">
-            <h3>Core</h3>
-            <ul>
-              <li class="muted"><strong>Programming languages:</strong> Python, R, Bash</li>
-              <li class="muted"><strong>Bioinformatics analysis:</strong> single-cell analysis, bulk RNA-seq analysis, single-cell trajectory inference, gene regulatory network inference,
-                ChIP-seq analysis, whole genome sequencing, ATAC-seq analysis</li>
-              </li>
-              <li class="muted"> <strong>Machine learning:</strong> neural networks, graph autoencoders, ESM</li>
-              <li class="muted"><strong>Others:</strong> ArcGIS, Tableau, Stata, Microsoft 365</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Comfortable With</h3>
-            <ul>
-              <li class="muted"><strong>Statistics:</strong> hypothesis testing, regression modeling, statistical inference</li>
-              <li class="muted"><strong>Web:</strong> HTML/CSS, Electron, Streamlit, Dash</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-    <section id="contact" class="section">
-      <div class="container">
-        <h2>Contact</h2>
-        <p class="muted"> Feel free to reach out at rc3517@barnard.edu or rikac24@gmail.com </p>
-        <div class="socials">
-          <a class="chip" href="https://github.com/rikaaaac">GitHub</a>
-          <a class="chip" href="https://www.linkedin.com/in/rika-chan-9a3358133/">LinkedIn</a>
-          <a class="chip" href="https://orcid.org/0009-0002-5990-797X">Orcid</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container foot-grid">
-      <div>
-        <strong>Rika Chan</strong>
-        <p class="muted">© <span id="year"></span> · Built with plain HTML/CSS/JS · Hosted on GitHub Pages</p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-      const themeBtn = document.getElementById('themeBtn');
-      const KEY = 'pref-theme';
-
-      function setTheme(mode) {
-        if (mode === 'light') {
-          document.documentElement.style.colorScheme = 'light';
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0ea5e9');
-          localStorage.setItem(KEY, 'light');
-        } else {
-          document.documentElement.style.colorScheme = 'dark';
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0ea5e9');
-          localStorage.setItem(KEY, 'dark');
-        }
-      }
-
-      function initTheme() {
-        const saved = localStorage.getItem(KEY);
-        if (saved) {
-          setTheme(saved);
-        } else {
-          setTheme('dark'); // ✅ default to dark
-        }
-      }
-
-      // run immediately
-      initTheme();
-
-      // toggle when button clicked
-      themeBtn.addEventListener('click', () => {
-        const current = localStorage.getItem(KEY) || 'dark';
-        setTheme(current === 'dark' ? 'light' : 'dark');
-      });
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(10, 15, 28, 0.95)';
+            } else {
+                header.style.background = 'rgba(10, 15, 28, 0.9)';
+            }
+        });
     </script>
-  </body>
+</body>
 </html>
