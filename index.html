@@ -225,17 +225,18 @@
   </footer>
 
   <script>
+      const themeBtn = document.getElementById('themeBtn');
       const KEY = 'pref-theme';
 
       function setTheme(mode) {
-        if (mode === 'dark') {
-          document.documentElement.setAttribute('data-theme', 'dark');
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0ea5e9');
-          localStorage.setItem(KEY, 'dark');
-        } else {
-          document.documentElement.setAttribute('data-theme', 'light');
+        if (mode === 'light') {
+          document.documentElement.style.colorScheme = 'light';
           document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0ea5e9');
           localStorage.setItem(KEY, 'light');
+        } else {
+          document.documentElement.style.colorScheme = 'dark';
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0ea5e9');
+          localStorage.setItem(KEY, 'dark');
         }
       }
 
@@ -244,15 +245,15 @@
         if (saved) {
           setTheme(saved);
         } else {
-          setTheme('dark'); // default to dark
+          setTheme('dark'); // ✅ default to dark
         }
       }
 
-      // Initialize theme immediately
+      // run immediately
       initTheme();
 
-      // Toggle handler
-      document.getElementById('themeBtn').addEventListener('click', () => {
+      // toggle when button clicked
+      themeBtn.addEventListener('click', () => {
         const current = localStorage.getItem(KEY) || 'dark';
         setTheme(current === 'dark' ? 'light' : 'dark');
       });
