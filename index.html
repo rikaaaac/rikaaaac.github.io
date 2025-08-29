@@ -103,8 +103,7 @@
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
-<!--         <button id="themeBtn" class="btn" aria-live="polite" aria-label="Toggle dark mode">🌓 <span class="sr-only">Toggle theme</span></button>
-      </nav> -->
+      </nav>
     </div>
   </header>
 
@@ -276,21 +275,15 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // theme toggle (respects system, persists choice)
-    const themeBtn = document.getElementById('themeBtn');
     const KEY = 'pref-theme';
-    function setTheme(mode){
-      if(mode === 'light'){
-        document.documentElement.style.colorScheme = 'light';
-        document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0ea5e9');
-        localStorage.setItem(KEY,'light');
-      }else if(mode === 'dark'){
-        document.documentElement.style.colorScheme = 'dark';
-        document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0ea5e9');
-        localStorage.setItem(KEY,'dark');
-      }else{
-        localStorage.removeItem(KEY);
-      }
+    function setTheme() {
+      document.documentElement.style.colorScheme = 'dark';
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0ea5e9');
+      localStorage.setItem(KEY,'dark');
     }
+    // run immediately
+    setTheme();
+
     function initTheme(){
       const saved = localStorage.getItem(KEY);
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
