@@ -180,6 +180,43 @@
             color: var(--text-muted);
         }
 
+        .roles-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .role-badge {
+            flex: 1;
+            min-width: 200px;
+            padding: 1rem;
+            background: rgba(14, 165, 233, 0.05);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .role-badge:hover {
+            background: rgba(14, 165, 233, 0.1);
+            border-color: rgba(14, 165, 233, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .role-badge h3 {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .role-badge p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin: 0;
+        }
+
         .hero-cta {
             display: flex;
             gap: 1rem;
@@ -466,6 +503,14 @@
                 align-items: stretch;
             }
 
+            .roles-container {
+                flex-direction: column;
+            }
+
+            .role-badge {
+                min-width: 100%;
+            }
+
             .publications-card {
                 position: static;
             }
@@ -531,9 +576,24 @@
                         </div>
                         <h1>Machine Learning Scientist</h1>
                         <p class="hero-description">
-                            I develop AI systems that learn from biological data to predict experimental outcomes, discover causal relationships, 
+                            I develop AI systems that learn from biological data to predict experimental outcomes, discover causal relationships,
                             and guide decision-making in drug discovery and genomics research. Interested in AI/ML x biology!
                         </p>
+
+                        <div class="roles-container">
+                            <div class="role-badge">
+                                <h3>Machine Learning Scientist</h3>
+                                <p>developing novel ML methods with uncertainty quantification and active learning</p>
+                            </div>
+                            <div class="role-badge">
+                                <h3>Computational Biologist</h3>
+                                <p>analyzing genomic and single-cell data to uncover biological insights</p>
+                            </div>
+                            <div class="role-badge">
+                                <h3>Research Software Engineer</h3>
+                                <p>building production-ready ML tools and interactive applications</p>
+                            </div>
+                        </div>
 
                         <div class="hero-cta">
                             <a href="assets/Rika_Chan.pdf" class="btn" download>Download Résumé</a>
